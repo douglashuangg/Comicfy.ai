@@ -1,12 +1,15 @@
+from threading import Thread
 import requests
-import json
-import time
 import os
+import time
+import json
 from dotenv import load_dotenv
 
 load_dotenv()
 
 wombo_key = os.getenv('WOMBO_KEY')
+
+images = []
 
 BASE_URL = "https://api.luan.tools/api/tasks/"
 HEADERS = {
@@ -15,7 +18,7 @@ HEADERS = {
 }
 
 
-def send_task_to_dream_api(style_id, prompt, target_img_path=None):
+def send_task_to_dream_api(style_id, prompt):
 
     generate_payload = {'use_target_image': 'false'}
     post_response = requests.post(BASE_URL, json = generate_payload, headers=HEADERS)
@@ -50,16 +53,33 @@ def send_task_to_dream_api(style_id, prompt, target_img_path=None):
             break            
         time.sleep(3)
     
-    return img_url
+    images.append(img_url)
     
 
 
 prompt = "Rhaenyra returns to King's Landing, prematurely ending an unsuccessful months-long tour to choose a consort."
 
-a = []
+Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
+Thread2 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
+Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
+Thread4 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
+Thread5 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
+Thread6 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
 
+# Start the threads
+Thread1.start()
+Thread2.start()
+Thread3.start()
+Thread4.start()
+Thread5.start()
+Thread6.start()
 
-for i in range(6):
-    a.append(send_task_to_dream_api(5, prompt))
+# Wait for the threads to finish
+Thread1.join()
+Thread2.join()
+Thread3.join()
+Thread4.join()
+Thread5.join()
+Thread6.join()
 
-print(a)
+print(images)
