@@ -1,0 +1,23 @@
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-length {
+  width: 150px !important;
+  height: 75px;
+}
+
+.custom-btn {
+  padding-top: 23px !important;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.two-buttons {
+  display: flex;
+}
