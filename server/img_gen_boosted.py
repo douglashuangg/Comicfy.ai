@@ -59,27 +59,31 @@ def send_task_to_dream_api(style_id, prompt):
 
 prompt = "Rhaenyra returns to King's Landing, prematurely ending an unsuccessful months-long tour to choose a consort."
 
-Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
-Thread2 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
-Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
-Thread4 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
-Thread5 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
-Thread6 = Thread(target=send_task_to_dream_api, args=(5, prompt,))
+def generate_images(prompts):
+    if (prompts.length() != 6):
+        return ['Error with prompts']
 
-# Start the threads
-Thread1.start()
-Thread2.start()
-Thread3.start()
-Thread4.start()
-Thread5.start()
-Thread6.start()
+    Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompts[0],))
+    Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompts[1],))
+    Thread2 = Thread(target=send_task_to_dream_api, args=(5, prompts[2],))
+    Thread4 = Thread(target=send_task_to_dream_api, args=(5, prompts[3],))
+    Thread5 = Thread(target=send_task_to_dream_api, args=(5, prompts[4],))
+    Thread6 = Thread(target=send_task_to_dream_api, args=(5, prompts[5],))
 
-# Wait for the threads to finish
-Thread1.join()
-Thread2.join()
-Thread3.join()
-Thread4.join()
-Thread5.join()
-Thread6.join()
+    # Start the threads
+    Thread1.start()
+    Thread2.start()
+    Thread3.start()
+    Thread4.start()
+    Thread5.start()
+    Thread6.start()
 
-print(images)
+    # Wait for the threads to finish
+    Thread1.join()
+    Thread2.join()
+    Thread3.join()
+    Thread4.join()
+    Thread5.join()
+    Thread6.join()
+
+    return images
