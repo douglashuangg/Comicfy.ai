@@ -60,7 +60,7 @@ def send_task_to_dream_api(style_id: int, prompt: str, width: int, height: int, 
 prompt = "Rhaenyra returns to King's Landing, prematurely ending an unsuccessful months-long tour to choose a consort."
 
 def generate_images(prompts):
-    if (prompts.length() != 6):
+    if (len(prompts) != 6):
         return ['Error with prompts']
 
     widths = [100,200,300,400,500,600]
