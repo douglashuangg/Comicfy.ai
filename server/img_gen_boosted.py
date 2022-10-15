@@ -18,7 +18,7 @@ HEADERS = {
 }
 
 
-def send_task_to_dream_api(style_id, prompt):
+def send_task_to_dream_api(style_id, prompt, width, height):
 
     generate_payload = {'use_target_image': 'false'}
     post_response = requests.post(BASE_URL, json = generate_payload, headers=HEADERS)
@@ -29,8 +29,8 @@ def send_task_to_dream_api(style_id, prompt):
     "style": style_id,                    
     "prompt": prompt,                    
     "target_image_weight": 0.1,                    
-    "width": 960,                    
-    "height": 1560    
+    "width": width,                    
+    "height": height    
     }})
     requests.request("PUT", task_url, headers=HEADERS, data=put_payload)
     
@@ -63,12 +63,15 @@ def generate_images(prompts):
     if (prompts.length() != 6):
         return ['Error with prompts']
 
-    Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompts[0],))
-    Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompts[1],))
-    Thread2 = Thread(target=send_task_to_dream_api, args=(5, prompts[2],))
-    Thread4 = Thread(target=send_task_to_dream_api, args=(5, prompts[3],))
-    Thread5 = Thread(target=send_task_to_dream_api, args=(5, prompts[4],))
-    Thread6 = Thread(target=send_task_to_dream_api, args=(5, prompts[5],))
+    widths = [100,200,300,400,500,600]
+    heights = [600,600,600,600,600,600]
+
+    Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompts[0], widths[0], heights[0],))
+    Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompts[1], widths[1], heights[1],))
+    Thread2 = Thread(target=send_task_to_dream_api, args=(5, prompts[2], widths[2], heights[2],))
+    Thread4 = Thread(target=send_task_to_dream_api, args=(5, prompts[3], widths[3], heights[3],))
+    Thread5 = Thread(target=send_task_to_dream_api, args=(5, prompts[4], widths[4], heights[4],))
+    Thread6 = Thread(target=send_task_to_dream_api, args=(5, prompts[5], widths[5], heights[5],))
 
     # Start the threads
     Thread1.start()
