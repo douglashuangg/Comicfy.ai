@@ -9,7 +9,7 @@ load_dotenv()
 
 wombo_key = os.getenv('WOMBO_KEY')
 
-images = []
+images = {1:'', 2:'', 3:'', 4:'', 5:'', 6:''}
 
 BASE_URL = "https://api.luan.tools/api/tasks/"
 HEADERS = {
@@ -18,7 +18,7 @@ HEADERS = {
 }
 
 
-def send_task_to_dream_api(style_id, prompt, width, height):
+def send_task_to_dream_api(style_id: int, prompt: str, width: int, height: int, num: int):
 
     generate_payload = {'use_target_image': 'false'}
     post_response = requests.post(BASE_URL, json = generate_payload, headers=HEADERS)
@@ -53,7 +53,7 @@ def send_task_to_dream_api(style_id, prompt, width, height):
             break            
         time.sleep(3)
     
-    images.append(img_url)
+    images[num] = img_url
     
 
 
@@ -66,12 +66,12 @@ def generate_images(prompts):
     widths = [100,200,300,400,500,600]
     heights = [600,600,600,600,600,600]
 
-    Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompts[0], widths[0], heights[0],))
-    Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompts[1], widths[1], heights[1],))
-    Thread2 = Thread(target=send_task_to_dream_api, args=(5, prompts[2], widths[2], heights[2],))
-    Thread4 = Thread(target=send_task_to_dream_api, args=(5, prompts[3], widths[3], heights[3],))
-    Thread5 = Thread(target=send_task_to_dream_api, args=(5, prompts[4], widths[4], heights[4],))
-    Thread6 = Thread(target=send_task_to_dream_api, args=(5, prompts[5], widths[5], heights[5],))
+    Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompts[0], widths[0], heights[0], 1,))
+    Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompts[1], widths[1], heights[1], 2,))
+    Thread2 = Thread(target=send_task_to_dream_api, args=(5, prompts[2], widths[2], heights[2], 3,))
+    Thread4 = Thread(target=send_task_to_dream_api, args=(5, prompts[3], widths[3], heights[3], 4,))
+    Thread5 = Thread(target=send_task_to_dream_api, args=(5, prompts[4], widths[4], heights[4], 5,))
+    Thread6 = Thread(target=send_task_to_dream_api, args=(5, prompts[5], widths[5], heights[5], 6,))
 
     # Start the threads
     Thread1.start()
@@ -89,4 +89,4 @@ def generate_images(prompts):
     Thread5.join()
     Thread6.join()
 
-    return images
+    return [images[1], images[2], images[3], images[4], images[5], images[6]]
