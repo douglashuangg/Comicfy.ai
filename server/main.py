@@ -28,8 +28,8 @@ class Data(BaseModel):
 async def root():
     return {"message": "Hello World"}
 
-@app.post("/sheesh")
-def splitAndSentiment(paragraph : Data):
+@app.post("/analyze")
+def parse_text(paragraph : Data):
     # sentiment decoding
     prompt = paragraph.paragraph
     print(prompt)

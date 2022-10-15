@@ -19,7 +19,7 @@ export default function InputPrompt() {
 
   const saveData = async () => {
     axios
-      .post("http://127.0.0.1:8000/sheesh", { paragraph: prompt })
+      .post("http://127.0.0.1:8000/analyze", { paragraph: prompt })
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
     // await axios({
