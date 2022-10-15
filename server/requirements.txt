@@ -1,3 +1,7 @@
 fastapi
 uvicorn
 requests
+dotenv
+cohere
+os
+numpy
