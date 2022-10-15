@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import dotenv
 import cohere
 import cohere.classify
@@ -6,23 +8,39 @@ import os
 import numpy as np
 
 dotenv.load_dotenv()
-
 app = FastAPI()
+origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+class Data(BaseModel):
+    paragraph: str
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/sheesh/{paragraph}")
-def splitAndSentiment(paragraph : str):
+@app.post("/sheesh")
+def splitAndSentiment(paragraph : Data):
     # sentiment decoding
+    prompt = paragraph.paragraph
+    print(prompt)
+    print(os.getenv("COHERE_KEY"))
     sentiment_decode = ['scary', 'furious', 'sad', 'joyful']
 
     # set up cohere client
     coClient = cohere.Client(f'{ os.getenv("COHERE_KEY") }')
 
     # splits paragraph into arr of sentences
-    sentences = paragraph.split('.')
+    sentences = prompt.split('.')
     sentence_moods = []
     for index in range(len(sentences)):
 
