@@ -1,2 +1,5 @@
 fastapi
 uvicorn
+cohere
+os
+numpy
