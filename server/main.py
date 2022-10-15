@@ -77,6 +77,12 @@ def parse_text(paragraph : Data):
                 cohere.classify.Example('They felt great as they finally receieved a break from working tirelessly.', 'joyful'),
                 cohere.classify.Example('Robb grinned and looked up from the bundle in his arms.', 'joyful'),
                 cohere.classify.Example('Excitement overwhelmed them when they receieved recognition for their work.', 'joyful'),
+                cohere.classify.Example('Jerry saved the day, donating 50% of his savings to the poor.', 'joyful'),
+                cohere.classify.Example('The rain disappeared, and it left a rainbow in its wake.', 'joyful'),
+                cohere.classify.Example('She won the lottery, so she jumped with joy.', 'joyful'),
+                cohere.classify.Example(' The earth was saved by all the police and firemen, present in society today.', 'joyful'),
+                cohere.classify.Example('She recieved a passing grade on her exam, completing her final university course. ', 'joyful'),
+                cohere.classify.Example('Ella smiles and accepts her new life as a goddess.', 'joyful'),
             ]
         )   
 
