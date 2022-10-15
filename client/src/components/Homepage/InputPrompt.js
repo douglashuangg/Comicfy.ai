@@ -11,6 +11,7 @@ export default function InputPrompt() {
   const [captions, setCaptions] = useState([]);
   const [sentiment, setSentiment] = useState("");
   const [loading, setLoading] = useState(false);
+  const [ready, setReady] = useState(false);
 
   const saveData = async () => {
     setLoading(true);
@@ -21,6 +22,7 @@ export default function InputPrompt() {
         setSentiment(response.data.overall_sentiment);
         setCaptions(response.data.sentences);
         setLoading(false);
+        setReady(true);
       })
       // .then(() => setCaptions)
       .catch((err) => console.log(err));
@@ -58,7 +60,10 @@ export default function InputPrompt() {
           </div>
           <div>
             <Link
-              className="btn btn-secondary btn-length custom-btn"
+              className={
+                "btn btn-secondary btn-length custom-btn " +
+                (!ready ? "disabled" : "")
+              }
               to="/comic"
               state={{ labels: captions, emotion: sentiment }}
             >

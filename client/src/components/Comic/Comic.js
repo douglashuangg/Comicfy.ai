@@ -1,15 +1,16 @@
-import React from 'react'
-import {useLocation} from "react-router-dom";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Comic = () => {
-    let data = useLocation();
-    const { labels, emotion } = data.state;
+  let data = useLocation();
+  const { labels, emotion } = data.state;
 
-    console.log(labels)
-    console.log(emotion)
   return (
-    <div>S</div>
-  )
-}
+    <>
+      {labels && <div>{labels}</div>}
+      {emotion && <div>{emotion}</div>}
+    </>
+  );
+};
 
-export default Comic
+export default Comic;
