@@ -87,8 +87,9 @@ def splitAndSentiment(paragraph : str):
             overall_mood_index = i
 
     # dict of key1 = sentences, key2 = sentiment
+    sentences.sort()
     sentencesAndSentiment = {
-        "sentences": sentences.sort()[max(0, len(sentences) - 6) : len(sentences)], # grabbing the top six longest sentences (for now) :: TODO -> get the 6 most relevant sentences
+        "sentences": sentences[max(0, len(sentences) - 6) : len(sentences)], # grabbing the top six longest sentences (for now) :: TODO -> get the 6 most relevant sentences
         "overall_sentiment": f"{sentiment_decode[int(overall_mood_index)]}"
     }
 
