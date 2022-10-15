@@ -1,45 +1,13 @@
-from typing import List
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 import dotenv
 import cohere
 import cohere.classify
 import os
 import numpy as np
-from img_gen_boosted import generate_images
-from sentiment import analyze_sentiment
 
-dotenv.load_dotenv()
-app = FastAPI()
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:8000",
-]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
+def analyze_sentiment(prompt: str):
+    print(os.getenv("COHERE_KEY"))
+    sentiment_decode = ['scary', 'furious', 'sad', 'joyful']
 
-class Data(BaseModel):
-    paragraph: str
-
-class Payload(BaseModel):
-    sentences: List[str]
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-@app.post("/analyze")
-def parse_text(paragraph : Data):
-    # sentiment decoding
-    prompt = paragraph.paragraph
-
-<<<<<<< HEAD
     # set up cohere client
     coClient = cohere.Client(f'{ os.getenv("COHERE_KEY") }')
 
@@ -59,7 +27,7 @@ def parse_text(paragraph : Data):
             examples=[
                 cohere.classify.Example('It was horrible, there were ghosts everywhere!', 'scary'),
                 cohere.classify.Example('The warfare was brutal, they wouldn\'t even spare the women nor the children', 'scary'),
-                cohere.classify.Example('The officials were dumbfounded by the fact that there was a coaltion army against them', 'scary'),
+                cohere.classify.Example('The officials were dumbfounded by the fact that there was a coalition army against them', 'scary'),
                 cohere.classify.Example('The men and women were shocked by the horrifying discovery.', 'scary'),
                 cohere.classify.Example('The hostages were scared that the criminals might shoot them.', 'scary'),
                  
@@ -81,12 +49,6 @@ def parse_text(paragraph : Data):
                 cohere.classify.Example('They felt great as they finally receieved a break from working tirelessly.', 'joyful'),
                 cohere.classify.Example('Robb grinned and looked up from the bundle in his arms.', 'joyful'),
                 cohere.classify.Example('Excitement overwhelmed them when they receieved recognition for their work.', 'joyful'),
-                cohere.classify.Example('Jerry saved the day, donating 50% of his savings to the poor.', 'joyful'),
-                cohere.classify.Example('The rain disappeared, and it left a rainbow in its wake.', 'joyful'),
-                cohere.classify.Example('She won the lottery, so she jumped with joy.', 'joyful'),
-                cohere.classify.Example(' The earth was saved by all the police and firemen, present in society today.', 'joyful'),
-                cohere.classify.Example('She recieved a passing grade on her exam, completing her final university course. ', 'joyful'),
-                cohere.classify.Example('Ella smiles and accepts her new life as a goddess.', 'joyful'),
             ]
         )   
 
@@ -113,23 +75,5 @@ def parse_text(paragraph : Data):
         if(curr_frequency> counter):
             counter = curr_frequency
             overall_mood_index = i
-=======
-    sentiment_analyzed = analyze_sentiment(prompt)
-    overall_sentiment = sentiment_analyzed[1]
-    sentences = sentiment_analyzed[0]
->>>>>>> 26221a0d47d50a36bbedb1a44798ee6e1b92d3ea
-
-    # dict of key1 = sentences, key2 = sentiment
-    sentences.sort()
-    sentencesAndSentiment = {
-        "sentences": sentences[max(0, len(sentences) - 6) : len(sentences)], # grabbing the top six longest sentences (for now) :: TODO -> get the 6 most relevant sentences
-        "overall_sentiment": f"{overall_sentiment}"
-    }
-
-    return sentencesAndSentiment
-
-
-@app.post("/generate")
-def generate(payload : Payload):
-    prompts = payload.sentences
-    return { "image_urls" : generate_images(prompts) }
+    
+    return [sentences, sentiment_decode[int(overall_mood_index)]]
