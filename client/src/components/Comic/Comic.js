@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./comic.css";
 import axios from "axios";
 import { Howl, Howler } from "howler";
@@ -8,6 +8,7 @@ import angrySong from "../../assets/songs/angry.mp3";
 import sadSong from "../../assets/songs/sad.mp3";
 import scarySong from "../../assets/songs/scary.mp3";
 import Speech from "./Speech";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Comic = () => {
   let data = useLocation();
@@ -15,6 +16,8 @@ const Comic = () => {
   const [urls, setUrls] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [sound, setSound] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const saveData = async () => {
       axios
@@ -60,8 +63,13 @@ const Comic = () => {
 
   return (
     <>
-      {/* {labels && <div>{labels}</div>}
-      {emotion && <div>{emotion}</div>} */}
+      <div className="center">
+        <h2>COMICFY.AI</h2>
+        <h4>
+          An AI powered visual experience that brings your stories to life.
+        </h4>
+      </div>
+
       {isLoading && (
         <div>
           <div
@@ -79,10 +87,20 @@ const Comic = () => {
       )}
       {!isLoading && (
         <div className="comic">
-          <button onClick={playTheme} className="button">
-            Button
-          </button>
-          <Speech labels={labels} />
+          <div className="audio-btns">
+            <div className="back-btn">
+              <button onClick={() => navigate(-1)} className="non-audio">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+            <div>
+              <button onClick={playTheme} className="audio">
+                <i class="fa-solid fa-music"></i>{" "}
+              </button>
+              <Speech labels={labels} />
+            </div>
+          </div>
+
           <div className="row1">
             <div
               className="big-panel"
