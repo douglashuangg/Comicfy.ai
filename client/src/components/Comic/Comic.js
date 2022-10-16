@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./comic.css";
 import axios from "axios";
+import { Howl, Howler  } from 'howler'
+import joyfulSong from './joyful.mp3'
+import angrySong from './angry.mp3'
+import sadSong from './sad.mp3'
+import scarySong from './scary.mp3'
 
 const Comic = () => {
   let data = useLocation();
   const { labels, emotion } = data.state;
   const [captions, setCaptions] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
+  const [sound, setSound] = useState(null);
   useEffect(() => {
     const saveData = async () => {
       axios
@@ -28,10 +33,35 @@ const Comic = () => {
 
   console.log(captions);
 
+  const playTheme = () => { 
+    if (emotion == 'joyful') { 
+      setSound(new Howl({ src: [joyfulSong] }));
+    }
+    else if (emotion == 'angry') { 
+      setSound(new Howl({ src: [angrySong] }));
+    }
+    else if (emotion == 'sad') { 
+      setSound(new Howl({ src: [sadSong] }));
+    }
+    else {
+      setSound(new Howl({ src: [scarySong] }));
+    }
+  
+    Howler.volume(1.0);
+  }
+
+  useEffect(() => {
+    if (sound) { 
+      sound.play();
+    }
+  }, [sound])
+
   return (
     <>
       {/* {labels && <div>{labels}</div>}
       {emotion && <div>{emotion}</div>} */}
+
+      <button onClick={playTheme} className='button'>Button</button>
 
       {!isLoading && (
         <div className="comic">
