@@ -22,14 +22,14 @@
   flex-direction: column-reverse;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-image: url("https://www.highgroundgaming.com/wp-content/uploads/2021/12/LoL-Season-12-Rune-Changes-400x250.jpg"); */
+  background-image: url("https://www.highgroundgaming.com/wp-content/uploads/2021/12/LoL-Season-12-Rune-Changes-400x250.jpg");
 }
 
 .small-panel-l,
 .small-panel-u {
   border: 1px solid red;
   width: 30%;
-  /* background-image: url("https://cdn.drawception.com/drawings/ryb8oSOfkw.png"); */
+  background-image: url("https://cdn.drawception.com/drawings/ryb8oSOfkw.png");
   background-repeat: no-repeat;
   background-size: cover;
 }

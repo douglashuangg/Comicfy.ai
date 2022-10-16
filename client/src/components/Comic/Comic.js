@@ -5,40 +5,40 @@ import axios from "axios";
 
 const Comic = () => {
   let data = useLocation();
-  const { labels, emotion } = data.state;
-  const [captions, setCaptions] = useState([]);
+  // const { labels, emotion } = data.state;
+  // const [captions, setCaptions] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const saveData = async () => {
-      axios
-        .post("http://127.0.0.1:8000/generate", {
-          sentences: labels,
-        })
-        .then((response) => {
-          setCaptions(response.data.image_urls);
-          console.log(response);
-          setLoading(false);
-        })
-        // .then(() => setCaptions)
-        .catch((err) => console.log(err));
-    };
-    saveData();
-  }, []);
+  // useEffect(() => {
+  //   const saveData = async () => {
+  //     axios
+  //       .post("http://127.0.0.1:8000/generate", {
+  //         sentences: labels,
+  //       })
+  //       .then((response) => {
+  //         setCaptions(response.data.image_urls);
+  //         console.log(response);
+  //         setLoading(false);
+  //       })
+  //       // .then(() => setCaptions)
+  //       .catch((err) => console.log(err));
+  //   };
+  //   saveData();
+  // }, []);
 
-  console.log(captions);
+  // console.log(captions);
 
   return (
     <>
       {/* {labels && <div>{labels}</div>}
       {emotion && <div>{emotion}</div>} */}
 
-      {!isLoading && (
+      {isLoading && (
         <div className="comic">
           <div className="row1">
             <div
               className="big-panel"
-              style={{ backgroundImage: `url(${captions[0]})` }}
+              // style={{ backgroundImage: `url(${captions[0]})` }}
             >
               <div className="caption">
                 Six years on, Corlys Velaryon, Lord of the Driftmark, is
@@ -47,7 +47,7 @@ const Comic = () => {
             </div>
             <div
               className="small-panel-u"
-              style={{ backgroundImage: `url(${captions[1]})` }}
+              // style={{ backgroundImage: `url(${captions[1]})` }}
             >
               <div className="caption">
                 His brother, Ser Vaemond, petitions King's Landing to name him
@@ -57,7 +57,7 @@ const Comic = () => {
             </div>
             <div
               className="small-panel-l"
-              style={{ backgroundImage: `url(${captions[2]})` }}
+              // style={{ backgroundImage: `url(${captions[2]})` }}
             >
               <div className="caption">
                 Rhaenyra and Daemon return to the capital to defend Lucerys'
@@ -69,7 +69,7 @@ const Comic = () => {
           <div className="row2">
             <div
               className="small-panel-l"
-              style={{ backgroundImage: `url(${captions[3]})` }}
+              // style={{ backgroundImage: `url(${captions[3]})` }}
             >
               <div className="caption">
                 They find King Viserys is bedridden, disfigured, and mentally
@@ -78,7 +78,7 @@ const Comic = () => {
             </div>
             <div
               className="small-panel-u"
-              style={{ backgroundImage: `url(${captions[4]})` }}
+              // style={{ backgroundImage: `url(${captions[4]})` }}
             >
               <div className="caption">
                 Daemon beheads Vaemond when he denounces Rhaenyra as a whore and
@@ -87,7 +87,7 @@ const Comic = () => {
             </div>
             <div
               className="big-panel"
-              style={{ backgroundImage: `url(${captions[5]})` }}
+              // style={{ backgroundImage: `url(${captions[5]})` }}
             >
               <div className="caption">
                 Queen Alicent and Ser Otto Hightower now oversee all royal
