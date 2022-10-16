@@ -12,8 +12,14 @@
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   color: white;
+}
+
+h2 {
+  margin-top: 1.8em;
 }
 
 .btn-length {
@@ -29,6 +35,7 @@ h2 {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-top: 1.8em;
 }
 
 .two-buttons {

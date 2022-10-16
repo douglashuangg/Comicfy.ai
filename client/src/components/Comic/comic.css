@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-left: 4em;
   margin-right: 4em;
-  margin-top: 3em;
+  margin-bottom: 2em;
 }
 
 .row1,
@@ -84,4 +84,30 @@ img {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.audio {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f7f7f9;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.non-audio {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f7f7f9;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.audio-btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 1em;
 }
