@@ -42,9 +42,17 @@ def parse_text(paragraph : Data):
     sentences = sentiment_analyzed[0]
 
     # dict of key1 = sentences, key2 = sentiment
-    sentences.sort()
+    sorted_sentences = sorted(sentences)
+    sorted_sentences = sorted_sentences[max(0, len(sorted_sentences) - 6) : len(sorted_sentences)]
+
+    # getting back original order
+    sorted_sentences_proper_order = []
+    for sentence in sentences:
+        if (sentence in sorted_sentences):
+            sorted_sentences_proper_order.append(sentence)
+
     sentencesAndSentiment = {
-        "sentences": sentences[max(0, len(sentences) - 6) : len(sentences)], # grabbing the top six longest sentences (for now) :: TODO -> get the 6 most relevant sentences
+        "sentences": sorted_sentences_proper_order, # grabbing the top six longest sentences in order :: TODO -> get the 6 most relevant sentences
         "overall_sentiment": f"{overall_sentiment}"
     }
 
