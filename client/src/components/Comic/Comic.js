@@ -35,6 +35,10 @@ const Comic = () => {
   console.log(urls);
 
   const playTheme = () => {
+    if (sound) {
+      return sound.playing() ? sound.pause() : sound.play();
+    }
+
     if (emotion === "joyful") {
       setSound(new Howl({ src: [joyfulSong] }));
     } else if (emotion === "angry") {
