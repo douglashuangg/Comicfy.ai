@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./comic.css";
 import axios from "axios";
+import { Howl, Howler  } from 'howler'
+import tempSound from './joyful.mp3'
 
 const Comic = () => {
   let data = useLocation();
   // const { labels, emotion } = data.state;
   // const [captions, setCaptions] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
+  const [sound, setSound] = useState(null);
   // useEffect(() => {
   //   const saveData = async () => {
   //     axios
@@ -28,10 +30,23 @@ const Comic = () => {
 
   // console.log(captions);
 
+  const playTheme = () => { 
+    setSound(new Howl({ src: [tempSound] }));
+    Howler.volume(1.0);
+  }
+
+  useEffect(() => {
+    if (sound) { 
+      sound.play();
+    }
+  }, [sound])
+
   return (
     <>
       {/* {labels && <div>{labels}</div>}
       {emotion && <div>{emotion}</div>} */}
+
+      <button onClick={playTheme} className='button'>Button</button>
 
       {isLoading && (
         <div className="comic">
