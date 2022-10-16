@@ -42,9 +42,7 @@ def send_task_to_dream_api(style_id: int, prompt: str, width: int, height: int, 
         state = response_json["state"]    
         print(img_url)
         if state == "completed":                    
-            r = requests.request("GET", response_json["result"])   
-            with open("image.jpg", "wb") as image_file:                            
-                image_file.write(r.content)                        
+            r = requests.request("GET", response_json["result"])                        
             print("image saved successfully :)")                    
             break 
     
