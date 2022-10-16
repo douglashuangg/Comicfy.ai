@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import "./comic.css";
 import axios from "axios";
 import { Howl, Howler } from "howler";
-import joyfulSong from "./joyful.mp3";
-import angrySong from "./angry.mp3";
-import sadSong from "./sad.mp3";
-import scarySong from "./scary.mp3";
+import joyfulSong from "../../assets/songs/angry.mp3";
+import angrySong from "../../assets/songs/joyful.mp3";
+import sadSong from "../../assets/songs/sad.mp3";
+import scarySong from "../../assets/songs/scary.mp3";
 
 const Comic = () => {
   let data = useLocation();
@@ -34,11 +34,11 @@ const Comic = () => {
   console.log(captions);
 
   const playTheme = () => {
-    if (emotion == "joyful") {
+    if (emotion === "joyful") {
       setSound(new Howl({ src: [joyfulSong] }));
-    } else if (emotion == "angry") {
+    } else if (emotion === "angry") {
       setSound(new Howl({ src: [angrySong] }));
-    } else if (emotion == "sad") {
+    } else if (emotion === "sad") {
       setSound(new Howl({ src: [sadSong] }));
     } else {
       setSound(new Howl({ src: [scarySong] }));
