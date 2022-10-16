@@ -7,6 +7,7 @@ import joyfulSong from "../../assets/songs/angry.mp3";
 import angrySong from "../../assets/songs/joyful.mp3";
 import sadSong from "../../assets/songs/sad.mp3";
 import scarySong from "../../assets/songs/scary.mp3";
+import Speech from "./Speech";
 
 const Comic = () => {
   let data = useLocation();
@@ -61,6 +62,7 @@ const Comic = () => {
       <button onClick={playTheme} className="button">
         Button
       </button>
+      <Speech labels={labels} />
 
       {!isLoading && (
         <div className="comic">
