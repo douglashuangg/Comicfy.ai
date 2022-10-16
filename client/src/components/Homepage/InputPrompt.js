@@ -32,6 +32,9 @@ export default function InputPrompt() {
     <>
       <div className="center">
         <h1>COMICFY.AI</h1>
+        <h2>
+          An AI powered visual experience that brings your stories to life.
+        </h2>
         <div>{captions}</div>
       </div>
       <div className="box">

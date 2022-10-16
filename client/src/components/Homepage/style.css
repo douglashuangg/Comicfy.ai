@@ -3,7 +3,8 @@
   justify-content: center;
 }
 
-h1 {
+h1,
+h2 {
   color: white;
 }
 
@@ -19,7 +20,7 @@ h1 {
 .center {
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .two-buttons {
