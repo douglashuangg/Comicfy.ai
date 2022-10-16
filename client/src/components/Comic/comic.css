@@ -67,3 +67,21 @@ img {
   width: auto;
   height: auto;
 }
+
+.loader {
+  border: 16px solid rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  border-top: 16px solid white;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
