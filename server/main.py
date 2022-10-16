@@ -3,9 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import dotenv
-import cohere
-import cohere.classify
-import os
+
 import numpy as np
 from img_gen_boosted import generate_images
 from sentiment import analyze_sentiment
