@@ -31,9 +31,18 @@ export default function InputPrompt() {
   return (
     <>
       <div className="center">
-        <h1>COMICFY.AI</h1>
+        <h1
+          style={{
+            fontSize: "100px",
+            fontWeight: "bold",
+            // backgroundColor: "black",
+            marginTop: "30px",
+          }}
+        >
+          COMICFY.AI
+        </h1>
         <h2>
-          An AI powered visual experience that brings your stories to life.
+          An AI powered visual experience that brings your stories to life!
         </h2>
       </div>
       <div className="box">
@@ -42,8 +51,9 @@ export default function InputPrompt() {
           onChange={(e) => {
             setPrompt(e.target.value);
           }}
-          rows="30"
+          rows="20"
           cols="100"
+          style={{ marginBottom: "60px" }}
         ></textarea>
 
         <div className="two-buttons">
@@ -68,6 +78,7 @@ export default function InputPrompt() {
               }
               to="/comic"
               state={{ labels: captions, emotion: sentiment }}
+              style={{ marginTop: "10px" }}
             >
               Generate
             </Link>
