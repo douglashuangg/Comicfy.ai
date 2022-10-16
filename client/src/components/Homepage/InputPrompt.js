@@ -31,19 +31,10 @@ export default function InputPrompt() {
   return (
     <>
       <div className="center">
-        <h1
-          style={{
-            fontSize: "100px",
-            fontWeight: "bold",
-            // backgroundColor: "black",
-            marginTop: "30px",
-          }}
-        >
-          COMICFY.AI
-        </h1>
-        <h2>
+        <h2>COMICFY.AI</h2>
+        <h4>
           An AI powered visual experience that brings your stories to life!
-        </h2>
+        </h4>
       </div>
       <div className="box">
         <textarea
@@ -51,9 +42,9 @@ export default function InputPrompt() {
           onChange={(e) => {
             setPrompt(e.target.value);
           }}
-          rows="20"
-          cols="100"
-          style={{ marginBottom: "60px" }}
+          rows="15"
+          cols="80"
+          style={{ marginBottom: "60px", backgroundColor: "#f0eee9" }}
           className="textArea"
         ></textarea>
 

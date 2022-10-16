@@ -144,6 +144,7 @@ const Comic = () => {
           </div>
         </div>
       )}
+      <div className="spacer"></div>
     </>
   );
 };

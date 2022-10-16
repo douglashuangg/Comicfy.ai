@@ -1,6 +1,7 @@
 .box {
   display: flex;
   justify-content: center;
+  margin-top: 2em;
 }
 
 .textArea {
@@ -18,9 +19,9 @@ h4 {
   color: white;
 }
 
-h2 {
+/* h2 {
   margin-top: 1.8em;
-}
+} */
 
 .btn-length {
   width: 150px !important;
