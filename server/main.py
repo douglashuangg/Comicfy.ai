@@ -42,7 +42,7 @@ def parse_text(paragraph : Data):
     sentences = sentiment_analyzed[0]
 
     # dict of key1 = sentences, key2 = sentiment
-    sorted_sentences = sorted(sentences)
+    sorted_sentences = sorted(sentences, key=len)
     sorted_sentences = sorted_sentences[max(0, len(sorted_sentences) - 6) : len(sorted_sentences)]
 
     # getting back original order

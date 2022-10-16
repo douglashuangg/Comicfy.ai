@@ -35,7 +35,6 @@ export default function InputPrompt() {
         <h2>
           An AI powered visual experience that brings your stories to life.
         </h2>
-        <div>{captions}</div>
       </div>
       <div className="box">
         <textarea

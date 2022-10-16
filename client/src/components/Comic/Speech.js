@@ -15,7 +15,6 @@ export default function Speech(props) {
 
   return (
     <div className="App">
-      <h1>React Text to Speech App</h1>
       <button onClick={() => speechHandler(msg)}>NARRATE</button>
       <button onClick={() => cancelNarration(msg)}>Cancel Talk</button>
     </div>
