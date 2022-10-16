@@ -58,7 +58,21 @@ const Comic = () => {
     <>
       {/* {labels && <div>{labels}</div>}
       {emotion && <div>{emotion}</div>} */}
-
+      {isLoading && (
+        <div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              minHeight: "100vh",
+            }}
+          >
+            <div className="loader"></div>
+          </div>
+        </div>
+      )}
       {!isLoading && (
         <div className="comic">
           <button onClick={playTheme} className="button">
