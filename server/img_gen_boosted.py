@@ -42,9 +42,7 @@ def send_task_to_dream_api(style_id: int, prompt: str, width: int, height: int, 
         state = response_json["state"]    
         print(img_url)
         if state == "completed":                    
-            r = requests.request("GET", response_json["result"])   
-            with open("image.jpg", "wb") as image_file:                            
-                image_file.write(r.content)                        
+            r = requests.request("GET", response_json["result"])                        
             print("image saved successfully :)")                    
             break 
     
@@ -63,8 +61,8 @@ def generate_images(prompts):
     if (len(prompts) != 6):
         return ['Error with prompts']
 
-    widths = [100,200,300,400,500,600]
-    heights = [600,600,600,600,600,600]
+    widths = [700,400,400,400,400,700]
+    heights = [440,440,440,440,440,440]
 
     Thread1 = Thread(target=send_task_to_dream_api, args=(5, prompts[0], widths[0], heights[0], 1,))
     Thread3 = Thread(target=send_task_to_dream_api, args=(5, prompts[1], widths[1], heights[1], 2,))

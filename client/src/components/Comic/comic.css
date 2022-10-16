@@ -1,0 +1,69 @@
+.comic {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4em;
+  margin-right: 4em;
+  margin-top: 3em;
+}
+
+.row1,
+.row2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 45vh;
+}
+
+.big-panel {
+  border: 1px solid black;
+
+  width: 35%;
+  display: flex;
+  flex-direction: column-reverse;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url("https://www.highgroundgaming.com/wp-content/uploads/2021/12/LoL-Season-12-Rune-Changes-400x250.jpg"); */
+}
+
+.small-panel-l,
+.small-panel-u {
+  border: 1px solid black;
+
+  width: 30%;
+  /* background-image: url("https://cdn.drawception.com/drawings/ryb8oSOfkw.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.caption {
+  /* height: 75px; */
+  margin: 0;
+  padding: 0.25em;
+  border: 2px solid black;
+  background-color: rgba(245, 234, 159, 0.817);
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+.small-panel-l {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.spacer {
+  height: 1.8em;
+}
+
+.spacer-h {
+  width: 1em;
+}
+
+img {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}

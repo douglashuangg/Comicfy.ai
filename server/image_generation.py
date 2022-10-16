@@ -26,8 +26,8 @@ def send_task_to_dream_api(style_id, prompt, target_img_path=None):
     "style": style_id,                    
     "prompt": prompt,                    
     "target_image_weight": 0.1,                    
-    "width": 960,                    
-    "height": 1560    
+    "width": 1300,                    
+    "height": 800   
     }})
     requests.request("PUT", task_url, headers=HEADERS, data=put_payload)
     
@@ -56,10 +56,4 @@ def send_task_to_dream_api(style_id, prompt, target_img_path=None):
 
 prompt = "Rhaenyra returns to King's Landing, prematurely ending an unsuccessful months-long tour to choose a consort."
 
-a = []
-
-
-for i in range(6):
-    a.append(send_task_to_dream_api(5, prompt))
-
-print(a)
+send_task_to_dream_api(11, "Background wallpaper for comic generator app")

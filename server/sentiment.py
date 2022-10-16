@@ -12,6 +12,9 @@ def analyze_sentiment(prompt: str):
     coClient = cohere.Client(f'{ os.getenv("COHERE_KEY") }')
 
     # splits paragraph into arr of sentences
+    if prompt[-1] == '.':
+        prompt = prompt[:-1]
+
     sentences = prompt.split('.')
     sentence_moods = []
     for index in range(len(sentences)):
@@ -101,3 +104,5 @@ def analyze_sentiment(prompt: str):
             overall_mood_index = i
     
     return [sentences, sentiment_decode[int(overall_mood_index)]]
+
+
