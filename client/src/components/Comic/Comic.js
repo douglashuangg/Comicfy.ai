@@ -52,7 +52,7 @@ const Comic = () => {
       setSound(new Howl({ src: [scarySong] }));
     }
 
-    Howler.volume(1.0);
+    Howler.volume(0.5);
   };
 
   useEffect(() => {
