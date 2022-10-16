@@ -47,13 +47,14 @@ export default function InputPrompt() {
       </div>
       <div className="box">
         <textarea
-          placeholder="Enter your story here:"
+          placeholder="So he huffed,and he puffed, and he huffed and he puffed and he blew the house in. The second little pig built ..."
           onChange={(e) => {
             setPrompt(e.target.value);
           }}
           rows="20"
           cols="100"
           style={{ marginBottom: "60px" }}
+          className="textArea"
         ></textarea>
 
         <div className="two-buttons">
